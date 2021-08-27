@@ -8,8 +8,8 @@ let loopId = 0;
 let loadedName = "";
 
 let c = el("output");
-c.width = 240;
-c.height = 240;
+c.width = 260;
+c.height = 260;
 let ctx = c.getContext("2d");
 let imgData = ctx.createImageData(256, 240);
 
