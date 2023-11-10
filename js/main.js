@@ -89,6 +89,23 @@ el("rom").onchange = function(e) {
   freader.readAsArrayBuffer(e.target.files[0]);
 }
 
+el("fromurl").onchange = function(e) {
+  audioHandler.resume();
+  let freader = new FileReader();
+  freader.onload = function() {
+    let buf = freader.result;
+
+    freader.readAsDataURL("https://kaboomb52.github.io/Nesputer/rom/tetris.nes")
+    
+      // load rom normally
+      let parts = e.target.value.split("\\");
+      let name = parts[parts.length - 1];
+      let arr = new Uint8Array(buf);
+      loadRom(arr, name);
+  }
+  freader.readAsArrayBuffer(e.target.files[0]);
+}
+
 el("pause").onclick = function(e) {
   if(paused && loaded) {
     loopId = requestAnimationFrame(update);
